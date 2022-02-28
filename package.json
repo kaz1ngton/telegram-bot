@@ -1,0 +1,18 @@
+{
+    "name": "telegram-caps-bot",
+    "version": "1.0.0",
+    "description": "bot to CAPS remove",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "watch": "nodemon --exec  node index.js"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "telegraf": "^4.7.0"
+    },
+    "devDependencies": {
+        "dotenv": "^14.2.0",
+        "nodemon": "^2.0.15"
+    }
+}
