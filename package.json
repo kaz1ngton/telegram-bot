@@ -9,10 +9,10 @@
     },
     "license": "MIT",
     "dependencies": {
+        "dotenv": "^16.0.0",
         "telegraf": "^4.7.0"
     },
     "devDependencies": {
-        "dotenv": "^14.2.0",
         "nodemon": "^2.0.15"
     }
 }
