@@ -32,6 +32,10 @@ module.exports = class Bot {
 
     isCaps(message) {
         const words = message.split(' ');
+        const MIN_CAPS_WORDS = 3;
+
+        if (words.length < MIN_CAPS_WORDS) return;
+
         let capsWords = 0;
 
         words.forEach((word) => {
