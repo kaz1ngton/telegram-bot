@@ -35,7 +35,9 @@ module.exports = class Bot {
         let capsWords = 0;
 
         words.forEach((word) => {
-            if (word.toUpperCase() === word && word.match(/[a-z]/i)) capsWords++;
+            const isSymbol = word.toLowerCase() === word.toUpperCase();
+
+            if (word.toUpperCase() === word && !isSymbol) capsWords++;
         });
 
         const isCapsMessage = capsWords / words.length > 0.5;
@@ -49,8 +51,9 @@ module.exports = class Bot {
         const formattedMessage = chars
             .map((_char) => {
                 let char = '';
+                const isSymbol = _char.toLowerCase() === _char.toUpperCase();
 
-                if (toUpper && _char.match(/[a-z]/i)) {
+                if (toUpper && !isSymbol) {
                     char = _char.toUpperCase();
                     toUpper = false;
                 } else {
