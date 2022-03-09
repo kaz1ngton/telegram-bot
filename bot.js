@@ -3,6 +3,8 @@ const MessageController = require('./messageController');
 
 module.exports = class Bot extends MessageController {
     constructor(BOT_TOKEN) {
+        super();
+
         const bot = new Telegraf(BOT_TOKEN);
         this.bot = bot
     }
