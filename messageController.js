@@ -2,7 +2,7 @@ const MISSPELL_WORDS = ['ихний', 'ихнее', 'ихняя', 'ихние', 
 
 module.exports = class MessageController {
     isCaps(ctx) {
-        if (!isTextMessage()) return false;
+        if (!this.isTextMessage(ctx)) return false;
 
         const message = ctx.update.message.text;
         const words = message.split(' ');
@@ -27,10 +27,10 @@ module.exports = class MessageController {
     }
 
     isMisspell(ctx) {
-        if (!isTextMessage()) return false;
+        if (!this.isTextMessage(ctx)) return false;
 
         const message = ctx.update.message.text;
-        const isMisspellMessage = MISSPELL_WORDS.some((word) => message.includes(word));
+        const isMisspellMessage = MISSPELL_WORDS.some((word) => message.toLowerCase().includes(word));
 
         if (isMisspellMessage) {
             this.handleMisspell(ctx);
@@ -41,13 +41,13 @@ module.exports = class MessageController {
     }
 
     isSpecificWord(ctx) {
-        if (!isTextMessage()) return false;
+        if (!this.isTextMessage(ctx)) return false;
 
         const message = ctx.update.message.text;
         const RAND_CHANCE = 0.2;
         const SPEC_WORD = 'да';
 
-        const containsSpecWord = message.toLowerCase().includes(SPEC_WORD);
+        const containsSpecWord = message.toLowerCase() === SPEC_WORD;;
         const isRandom = Math.random() < RAND_CHANCE;
 
         if (containsSpecWord && isRandom) {
