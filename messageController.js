@@ -87,7 +87,7 @@ module.exports = class MessageController {
     }
 
     handleSpecWord(ctx) {
-        const message = 'их';
+        const message = 'пизда';
         const messageId = ctx.message.message_id;
         ctx.reply(message, { reply_to_message_id: messageId });
     }
