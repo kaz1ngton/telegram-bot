@@ -10,7 +10,8 @@ module.exports = class Bot {
 
     launch() {
         this.bot.on('message', this.onMessage.bind(this));
-        this.bot.command('pat', handlePat)
+console.log(handlePat)
+        this.bot.hears('/pat', handlePat)
 
         process.once('SIGINT', () => this.bot.stop('SIGINT'));
         process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
