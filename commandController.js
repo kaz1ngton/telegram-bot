@@ -1,4 +1,4 @@
-const GIFs =[
+const GIFs = [
     'https://tenor.com/bKowT.gif',
     'https://tenor.com/3TW9.gif',
     'https://tenor.com/PM1V.gif',
@@ -26,6 +26,6 @@ const handlePat = (ctx) => {
     } catch (e) {
         console.error(e)
     }
-}
+};
 
-module.export = { handlePat }
+module.exports = { handlePat };
