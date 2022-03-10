@@ -15,13 +15,17 @@ const handlePat = (ctx) => {
     const message = ctx.message.text
     const user = message.split(' ')[1]
 
+    console.log(message)
+
     if (!user) return;
 
     try{
-    const image = GIFs[Math.floor(Math.random() * GIFs.length)];
-    ctx.replyWithPhoto({ url: image }, { caption: `${ctx.message.from.first_name} погладил ${user}` });
-    ctx.deleteMessage();
-    } catch (e) {}
+        const image = GIFs[Math.floor(Math.random() * GIFs.length)];
+        ctx.replyWithPhoto({ url: image }, { caption: `${ctx.message.from.first_name} погладил ${user}` });
+        ctx.deleteMessage();
+    } catch (e) {
+        console.error(e)
+    }
 }
 
-module.export = {handlePat}
+module.export = { handlePat }
