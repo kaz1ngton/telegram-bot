@@ -2,7 +2,7 @@ const { Telegraf } = require('telegraf');
 const MessageController = require('./messageController');
 const { handlePat } = require('./commandController')
 
-module.exports = class Bot extends MessageController {
+module.exports = class Bot {
     constructor(BOT_TOKEN) {
         this.bot = new Telegraf(BOT_TOKEN);
         this.messageController = new MessageController()
