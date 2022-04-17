@@ -1,6 +1,6 @@
 {
     "name": "telegram-bot",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "description": "simple telegram bot based on Telegraf.js",
     "main": "src/index.js",
     "scripts": {

@@ -1,9 +1,8 @@
 import { Telegraf, Context } from 'telegraf';
 import { MountMap } from 'telegraf/typings/telegram-types';
 import { Update } from 'typegram';
-import { isPat } from './handlers/commands/handle-pat';
-import { isRand } from './handlers/commands/handle-rand';
 
+import { handlePat, handleRand, handleSummon } from './handlers/commands/handle-commands';
 import { isCaps, isMisspell, isSpecWord } from './handlers/text/handle-text';
 
 module.exports = class Bot {
@@ -14,6 +13,7 @@ module.exports = class Bot {
     }
 
     launch() {
+        this.setUpCommands();
         this.bot.on('text', this.onText.bind(this));
 
         process.once('SIGINT', () => this.bot.stop('SIGINT'));
@@ -24,7 +24,6 @@ module.exports = class Bot {
 
     onText(ctx: Context<MountMap['text']>) {
         if (ctx.update.message.text[0] === '/') {
-            this.onCommand(ctx);
             return;
         }
 
@@ -33,8 +32,9 @@ module.exports = class Bot {
         else if (isSpecWord(ctx)) return;
     }
 
-    onCommand(ctx: Context<MountMap['text']>) {
-        if (isRand(ctx)) return;
-        else if (isPat(ctx)) return;
+    setUpCommands() {
+        this.bot.command('pat', handlePat);
+        this.bot.command('rand', handleRand);
+        this.bot.command('summon', handleSummon);
     }
 };
