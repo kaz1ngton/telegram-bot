@@ -1,18 +1,23 @@
 {
-    "name": "telegram-caps-bot",
+    "name": "telegram-bot",
     "version": "1.0.0",
-    "description": "bot to CAPS remove",
-    "main": "index.js",
+    "description": "simple telegram bot based on Telegraf.js",
+    "main": "src/index.js",
     "scripts": {
-        "start": "node index.js",
-        "watch": "nodemon --exec  node index.js"
+        "prod": "set NODE_ENV=production && ts-node src/index.ts ",
+        "start": "set NODE_ENV=development && ts-node src/index.ts ",
+        "watch": "set NODE_ENV=development && nodemon"
     },
     "license": "MIT",
     "dependencies": {
+        "axios": "^0.26.1",
         "dotenv": "^16.0.0",
-        "telegraf": "^4.7.0"
+        "telegraf": "^4.7.0",
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.3"
     },
     "devDependencies": {
+        "@types/node": "^17.0.24",
         "nodemon": "^2.0.15"
     }
 }
