@@ -1,0 +1,22 @@
+{
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./node_modules/**/*",
+  ],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "target": "es2021",
+    "moduleResolution": "node",
+    "strict": true,
+    "removeComments": true,
+    "lib": [
+      "es2021"
+    ],
+    "skipLibCheck": true,
+    "rootDir": "src",
+    "outDir": "dist"
+  }
+}
