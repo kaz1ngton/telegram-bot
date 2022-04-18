@@ -25,6 +25,6 @@ export const handlePat = (ctx: NarrowedContext<Context, MountMap['text']>) => {
             }
         })
         .catch((e) => {
-            console.log(e);
+            console.error(e);
         });
 };

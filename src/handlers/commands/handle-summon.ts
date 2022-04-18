@@ -14,10 +14,11 @@ export const handleSummon = (ctx: NarrowedContext<Context, MountMap['text']>) =>
 
     const CATEGORY = 'summon-jutsu';
     const GIPHY_API_KEY = <string>process.env.GIPHY_API_KEY;
+    const REQUEST_URL = `https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=${CATEGORY}`;
 
     axios({
         method: 'GET',
-        url: `https://api.giphy.com/v1/gifs/translate?api_key=${GIPHY_API_KEY}&s=${CATEGORY}`,
+        url: REQUEST_URL,
     })
         .then((response) => {
             const NUMBER_PINGS = 5;
@@ -38,7 +39,7 @@ export const handleSummon = (ctx: NarrowedContext<Context, MountMap['text']>) =>
             });
         })
         .catch((e) => {
-            console.log(e);
+            console.error(e);
         });
 };
 
