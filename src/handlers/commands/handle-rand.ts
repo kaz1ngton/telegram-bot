@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 import { Context, NarrowedContext } from 'telegraf';
 import { MountMap } from 'telegraf/typings/telegram-types';
@@ -44,7 +44,7 @@ const handleRandProp = (ctx: NarrowedContext<Context, MountMap['text']>) => {
     const MIN = 0;
     const MAX = args.length - 1;
 
-    const REQUEST_URL = `https://www.random.org/integers/?num=1&min=${MIN}&max=${MAX}&base=10&col=1&format`;
+    const REQUEST_URL = `https://www.random.org/integers/?num=1&min=${MIN}&max=${MAX}&base=10&col=1&format=plain`;
 
     axios(REQUEST_URL)
         .then((res) => {
