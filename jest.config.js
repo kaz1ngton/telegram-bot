@@ -1,5 +1,6 @@
 module.exports = {
     moduleDirectories: ['src'],
     preset: 'ts-jest',
-    moduleFileExtensions: ['js', 'ts', 'tsx'],
+    testEnvironment: 'node',
+    moduleFileExtensions: ['js', 'ts'],
 };

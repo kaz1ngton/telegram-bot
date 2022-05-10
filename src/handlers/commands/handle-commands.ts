@@ -1,3 +1,3 @@
-export { handlePat } from './handle-pat';
-export { handleRand } from './handle-rand';
-export { handleSummon } from './handle-summon';
+export { handlePat } from './pat/pat';
+export { handleRand } from './rand/rand';
+export { handleSummon } from './summon/summon';

@@ -1,22 +1,10 @@
 import { Context, NarrowedContext } from 'telegraf';
 import { MountMap } from 'telegraf/typings/telegram-types';
 
-export const isCaps = (ctx: NarrowedContext<Context, MountMap['text']>): boolean=> {
+export const isCapsContext = (ctx: NarrowedContext<Context, MountMap['text']>): boolean => {
     const message = ctx.update.message.text;
-    const words: string[] = message.split(' ');
-    const MIN_CAPS_WORDS = 3;
-    let capsWords = 0;
 
-    words.forEach((word) => {
-        const isSymbol = word.toLowerCase() === word.toUpperCase();
-
-        if (word.toUpperCase() === word && !isSymbol) capsWords++;
-    });
-
-    const isAntiCaps = message.includes('#caps');
-    const isCapsMessage = words.length > MIN_CAPS_WORDS && capsWords / words.length > 0.5 && !isAntiCaps;
-
-    if (isCapsMessage) {
+    if (isCapsText(message)) {
         handleCaps(ctx);
         return true;
     }
@@ -43,11 +31,28 @@ const handleCaps = (ctx: NarrowedContext<Context, MountMap['text']>) => {
     }
 };
 
-const toLowerCase = (str: string): string => {
-    const chars: string[] = str.split('');
+export const isCapsText = (text: string): boolean => {
+    const words: string[] = text.split(' ');
+    const MIN_CAPS_WORDS = 3;
+    let capsWords = 0;
+
+    words.forEach((word) => {
+        const isSymbol = word.toLowerCase() === word.toUpperCase();
+
+        if (word.toUpperCase() === word && !isSymbol) capsWords++;
+    });
+
+    const isAntiCaps = text.includes('#caps');
+    const result = words.length > MIN_CAPS_WORDS && capsWords / words.length > 0.5 && !isAntiCaps;
+
+    return result;
+};
+
+export const toLowerCase = (text: string): string => {
+    const chars: string[] = text.split('');
     let toUpper = true;
 
-    const formattedMessage = chars
+    const formattedText = chars
         .map((char) => {
             const isSymbol = char.toLowerCase() === char.toUpperCase();
 
@@ -64,5 +69,5 @@ const toLowerCase = (str: string): string => {
         })
         .join('');
 
-    return formattedMessage;
+    return formattedText;
 };

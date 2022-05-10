@@ -4,9 +4,10 @@
     "description": "simple telegram bot based on Telegraf.js",
     "main": "src/index.js",
     "scripts": {
-        "prod": "set NODE_ENV=production && ts-node src/index.ts ",
-        "start": "set NODE_ENV=development && ts-node src/index.ts ",
-        "watch": "set NODE_ENV=development && nodemon"
+        "prod": "NODE_ENV=production && ts-node src/index.ts ",
+        "start": "NODE_ENV=development && ts-node src/index.ts ",
+        "watch": "NODE_ENV=development && nodemon",
+        "test": "NODE_ENV=development && jest"
     },
     "license": "MIT",
     "dependencies": {

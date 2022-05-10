@@ -3,7 +3,7 @@ import { MountMap } from 'telegraf/typings/telegram-types';
 import { Update } from 'typegram';
 
 import { handlePat, handleRand, handleSummon } from './handlers/commands/handle-commands';
-import { isCaps, isMisspell, isSpecWord } from './handlers/text/handle-text';
+import { isCapsContext, isMisspellContext, isSpecWordContext } from './handlers/text/handle-text';
 
 module.exports = class Bot {
     bot: Telegraf<Context<Update>>;
@@ -27,9 +27,9 @@ module.exports = class Bot {
             return;
         }
 
-        if (isCaps(ctx)) return;
-        else if (isMisspell(ctx)) return;
-        else if (isSpecWord(ctx)) return;
+        if (isCapsContext(ctx)) return;
+        else if (isMisspellContext(ctx)) return;
+        else if (isSpecWordContext(ctx)) return;
     }
 
     setUpCommands() {
