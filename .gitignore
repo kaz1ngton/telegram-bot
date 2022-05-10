@@ -1,4 +1,8 @@
 node_modules/
-*.lock
-*.env
 .vscode/
+.yarn/
+
+.pnp.cjs
+.pnp.loader.mjs
+.yarnrc.yml
+*.env
